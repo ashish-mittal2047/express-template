@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title Homepage
+  body 
+    form(action="http://localhost:3000/formSubmit" method="POST" enctype="multipart/form-data")
+      label(for="name") Email:
+      input(name="email" type="email" id="email" value="")
+      br
+      label(for="password") Password: 
+      input(name="password" type="password" id="password" value="")
+      br
+      label(for="image") Image: 
+      input(name="image" type="file" id="image" accept="image/*")
+      br
+      button(type="submit") Submit
+    -if(data)
+      ul
+        - for(let key in data) {
+            li #{key} - #{data[key]}    
+        -}
+    -if(data.imageurl) {
+      img(src=data.imageurl alt="fang yuan")
+    -}
